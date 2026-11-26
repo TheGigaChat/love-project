@@ -2,7 +2,7 @@ const scrollKeys = new Set([
   'ArrowDown', 'ArrowUp', 'PageDown', 'PageUp', 'Home', 'End', ' ',
 ]);
 
-export function setUpPlayback({ start, control, status, soundtrack, openingPhoto }) {
+export function setUpPlayback({ start, control, status, openingPhoto }) {
   const startLabel = start.querySelector('[data-label]');
   const controlLabel = control.querySelector('[data-label]');
   const finePointer = window.matchMedia('(pointer: fine)');
@@ -25,7 +25,6 @@ export function setUpPlayback({ start, control, status, soundtrack, openingPhoto
 
     playing = false;
     cancelAnimationFrame(frame);
-    soundtrack.pause();
     updateControls('Продолжить');
     status.textContent = message;
   }
@@ -79,10 +78,6 @@ export function setUpPlayback({ start, control, status, soundtrack, openingPhoto
     targetY = window.scrollY;
     expectedY = targetY;
     previousTime = undefined;
-    soundtrack.volume = 0.45;
-    soundtrack.play().catch(() => {
-      if (playing) status.textContent = 'Просмотр продолжается. Музыка недоступна.';
-    });
     updateControls('Пауза');
     status.textContent = 'Просмотр начался.';
     frame = requestAnimationFrame(advance);

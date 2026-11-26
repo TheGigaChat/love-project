@@ -1,28 +1,51 @@
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { setUpPlayback } from './playback.js';
+import { setUpSoundtrack } from './soundtrack.js';
 
 gsap.registerPlugin(ScrollTrigger);
 
+const start = document.querySelector('[data-start]');
+const status = document.querySelector('[data-playback-status]');
+const chapterTwo = document.querySelector('#month-two');
+
 setUpPlayback({
-  start: document.querySelector('[data-start]'),
+  start,
   control: document.querySelector('[data-playback]'),
-  status: document.querySelector('[data-playback-status]'),
-  soundtrack: document.querySelector('[data-soundtrack]'),
+  status,
   openingPhoto: document.querySelector('[data-opening-photo]'),
+});
+
+const soundtrack = setUpSoundtrack({
+  start,
+  elements: [...document.querySelectorAll('[data-soundtrack]')],
+  onUnavailable() {
+    status.textContent = 'Не удалось включить музыку для этой главы.';
+  },
+});
+
+function selectChapterSoundtrack(trigger) {
+  soundtrack.select(trigger.scroll() >= trigger.start ? 1 : 0);
+}
+
+ScrollTrigger.create({
+  trigger: chapterTwo,
+  start: 'top center',
+  end: 'max',
+  onUpdate: selectChapterSoundtrack,
+  onRefresh: selectChapterSoundtrack,
 });
 
 const motion = gsap.matchMedia();
 
 motion.add('(prefers-reduced-motion: no-preference)', () => {
-  const chapter = document.querySelector('#month-two');
-  const entrance = chapter.querySelector('[data-chapter-entrance]');
-  const photo = chapter.querySelector('[data-chapter-photo]');
+  const entrance = chapterTwo.querySelector('[data-chapter-entrance]');
+  const photo = chapterTwo.querySelector('[data-chapter-photo]');
 
   gsap.timeline({
     defaults: { ease: 'none' },
     scrollTrigger: {
-      trigger: chapter,
+      trigger: chapterTwo,
       start: 'top 95%',
       end: 'top 12%',
       scrub: true,
