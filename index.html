@@ -1,11 +1,11 @@
 <!doctype html>
-<html lang="en">
+<html lang="ru">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="theme-color" content="#f0eaf8">
-    <meta name="description" content="A memory journal, told one month at a time.">
-    <title>The Little Things · A Memory Journal</title>
+    <meta name="description" content="История о нас, месяц за месяцем.">
+    <title>Те самые мелочи — история о нас</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext x='16' y='25' font-size='27' text-anchor='middle' fill='%23523271'%3E♥%3C/text%3E%3C/svg%3E">
     <link rel="stylesheet" href="/source/story.css">
     <script type="module" src="/source/main.js"></script>
@@ -14,28 +14,28 @@
     <main>
       <section class="cover" aria-labelledby="cover-title">
         <header class="masthead shell">
-          <span class="wordmark"><span aria-hidden="true">♡</span> For Us</span>
-          <a class="read-link" href="#month-one">Read at your pace <span aria-hidden="true">↓</span></a>
+          <span class="wordmark"><span aria-hidden="true">♡</span> Для нас</span>
+          <a class="read-link" href="#month-one">Читать в своём темпе <span aria-hidden="true">↓</span></a>
         </header>
 
         <div class="cover__layout shell">
           <div class="cover__copy">
-            <p class="eyebrow">A memory journal</p>
-            <h1 id="cover-title">The little <em>things.</em></h1>
-            <p class="cover__description">A story about us, told one month at a time.</p>
+            <p class="eyebrow">Дневник воспоминаний</p>
+            <h1 id="cover-title">Те самые <em>мелочи.</em></h1>
+            <p class="cover__description">История о нас, месяц за месяцем.</p>
             <button class="play-button cover__start" type="button" data-start disabled>
               <span class="play-icon" aria-hidden="true"></span>
-              <span data-label>Loading…</span>
+              <span data-label>Загрузка…</span>
             </button>
-            <noscript><p>Scroll down to read the journal.</p></noscript>
+            <noscript><p>Пролистай вниз, чтобы читать дальше.</p></noscript>
           </div>
 
           <figure class="cover__figure">
             <div class="cover__frame">
-              <img class="cover__photo" src="/media/test-month1.jpg" width="1050" height="1400"
-                fetchpriority="high" alt="A person in glasses standing in a warmly lit lobby" data-opening-photo>
+              <img class="cover__photo" src="/media/test-data/photo/test-month1.webp" width="1050" height="1400"
+                fetchpriority="high" alt="Парень в очках в холле с тёплым светом" data-opening-photo>
             </div>
-            <figcaption><span>From the first chapter</span><span aria-hidden="true">01</span></figcaption>
+            <figcaption><span>Из первой главы</span><span aria-hidden="true">01</span></figcaption>
           </figure>
         </div>
       </section>
@@ -43,37 +43,37 @@
       <article id="month-one" class="chapter-one" aria-labelledby="month-one-title">
         <section class="chapter-one__opening shell">
           <div class="chapter-one__intro">
-            <p class="eyebrow"><span class="rule" aria-hidden="true"></span> Month 01</p>
-            <h2 id="month-one-title">In the <em>beginning.</em></h2>
-            <p class="story-copy">Every story starts somewhere. For now, a familiar face and an ordinary afternoon will hold this page.</p>
+            <p class="eyebrow"><span class="rule" aria-hidden="true"></span> Месяц 01</p>
+            <h2 id="month-one-title">С самого <em>начала.</em></h2>
+            <p class="story-copy">У каждой истории есть начало. На этой странице пока только знакомое лицо и один самый обычный день.</p>
           </div>
           <figure class="chapter-one__figure">
-            <img src="/media/test-month1.jpg" width="1050" height="1400" loading="lazy" decoding="async"
-              alt="Portrait in the lobby, with curved lines of light across the ceiling">
-            <figcaption class="eyebrow">A first photograph</figcaption>
+            <img src="/media/test-data/photo/test-month1.webp" width="1050" height="1400" loading="lazy" decoding="async"
+              alt="Портрет в холле с изогнутыми светильниками на потолке">
+            <figcaption class="eyebrow">Первый снимок</figcaption>
           </figure>
         </section>
 
         <section class="clip-scene shell" aria-labelledby="clip-title">
           <div class="clip-scene__card">
             <div class="clip-scene__copy">
-              <p class="eyebrow"><span class="record-dot" aria-hidden="true"></span> A moving memory</p>
-              <h3 id="clip-title">A few seconds.</h3>
-              <p class="story-copy">Some moments are easier to keep in motion.</p>
+              <p class="eyebrow"><span class="record-dot" aria-hidden="true"></span> Живой момент</p>
+              <h3 id="clip-title">Несколько секунд.</h3>
+              <p class="story-copy">Некоторые моменты хочется сохранить в движении.</p>
             </div>
             <div class="clip-scene__frame">
               <video width="400" height="400" preload="none" muted playsinline loop
-                aria-label="Silent placeholder memory clip" data-memory-clip
-                data-src="/media/memory-clip.mp4" data-poster="/media/memory-clip.jpg"></video>
+                aria-label="Короткое видео без звука" data-memory-clip
+                data-src="/media/test-data/video/memory-clip.mp4" data-poster="/media/test-data/photo/memory-clip.webp"></video>
             </div>
           </div>
         </section>
 
         <section class="chapter-one__closing shell" aria-labelledby="closing-title">
-          <p class="eyebrow">At the end of month one</p>
-          <h3 id="closing-title">The things <em>we keep.</em></h3>
-          <p class="story-copy">One photograph, a handful of seconds, and a place to begin again.</p>
-          <a class="read-link next-link" href="#month-two">Turn the page <span aria-hidden="true">↓</span></a>
+          <p class="eyebrow">В конце первого месяца</p>
+          <h3 id="closing-title">Что мы <em>бережём.</em></h3>
+          <p class="story-copy">Один снимок, несколько секунд, и вот уже пора перевернуть страницу.</p>
+          <a class="read-link next-link" href="#month-two">Перевернуть страницу <span aria-hidden="true">↓</span></a>
         </section>
       </article>
 
@@ -81,27 +81,27 @@
         <div class="chapter-two__scene" data-chapter-entrance>
           <div class="chapter-two__layout shell">
             <div class="chapter-two__copy">
-              <p class="eyebrow"><span class="rule" aria-hidden="true"></span> Month 02</p>
-              <h2 id="month-two-title">A different <em>light.</em></h2>
-              <p class="story-copy">A new month opens outside.</p>
+              <p class="eyebrow"><span class="rule" aria-hidden="true"></span> Месяц 02</p>
+              <h2 id="month-two-title">В другом <em>свете.</em></h2>
+              <p class="story-copy">Новый месяц встречает нас на улице.</p>
             </div>
             <figure class="chapter-two__figure">
               <div class="chapter-two__frame">
-                <img src="/media/test-month2.jpg" width="933" height="1400" loading="lazy" decoding="async"
-                  alt="A smiling person in glasses standing beneath sunlit trees" data-chapter-photo>
+                <img src="/media/test-data/photo/test-month2.webp" width="933" height="1400" loading="lazy" decoding="async"
+                  alt="Парень в очках улыбается под деревьями, освещёнными солнцем" data-chapter-photo>
               </div>
-              <figcaption class="eyebrow">The next chapter</figcaption>
+              <figcaption class="eyebrow">Следующая глава</figcaption>
             </figure>
           </div>
         </div>
       </article>
     </main>
 
-    <audio preload="none" loop src="/media/soundtrack.mp3" data-soundtrack></audio>
+    <audio preload="none" loop src="/media/test-data/music/good%20for%20the%20ghost%20-%20Alge.mp3" data-soundtrack></audio>
 
     <button class="play-button playback-control" type="button" data-playback hidden>
       <span class="play-icon" aria-hidden="true"></span>
-      <span data-label>Pause</span>
+      <span data-label>Пауза</span>
     </button>
     <p class="sr-only" role="status" data-playback-status></p>
   </body>

@@ -19,13 +19,13 @@ export function setUpPlayback({ start, control, status, soundtrack, openingPhoto
     control.dataset.playing = playing;
   }
 
-  function pause(message = 'Playback paused.') {
+  function pause(message = 'Просмотр приостановлен.') {
     if (!playing) return;
 
     playing = false;
     cancelAnimationFrame(frame);
     soundtrack.pause();
-    updateControls('Resume');
+    updateControls('Продолжить');
     status.textContent = message;
   }
 
@@ -54,7 +54,7 @@ export function setUpPlayback({ start, control, status, soundtrack, openingPhoto
     expectedY = window.scrollY;
 
     if (targetY >= end) {
-      pause('You reached the end of the preview.');
+      pause('Это конец предварительного просмотра.');
       return;
     }
 
@@ -68,7 +68,7 @@ export function setUpPlayback({ start, control, status, soundtrack, openingPhoto
     }
 
     if (window.scrollY >= bottom() - 1) {
-      status.textContent = 'Scroll back to resume the story.';
+      status.textContent = 'Пролистай немного назад, чтобы продолжить.';
       return;
     }
 
@@ -79,10 +79,10 @@ export function setUpPlayback({ start, control, status, soundtrack, openingPhoto
     previousTime = undefined;
     soundtrack.volume = 0.45;
     soundtrack.play().catch(() => {
-      if (playing) status.textContent = 'The story is playing. The soundtrack is unavailable.';
+      if (playing) status.textContent = 'Просмотр продолжается. Музыка недоступна.';
     });
-    updateControls('Pause');
-    status.textContent = 'Playback started.';
+    updateControls('Пауза');
+    status.textContent = 'Просмотр начался.';
     frame = requestAnimationFrame(advance);
   }
 
@@ -92,7 +92,7 @@ export function setUpPlayback({ start, control, status, soundtrack, openingPhoto
   openingPhoto.decode().catch(() => {
     // Keep the story available if the opening photo cannot load.
   }).then(() => {
-    startLabel.textContent = 'Start';
+    startLabel.textContent = 'Начать';
     start.disabled = false;
   });
 

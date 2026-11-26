@@ -1,3 +1,13 @@
 node_modules/
 dist/
 *.local
+
+# Original JPEG and PNG images
+*.[jJ][pP][gG]
+*.[jJ][pP][eE][gG]
+*.[pP][nN][gG]
+
+# Keep optimized JPEG and PNG copies trackable alongside WebP files
+!*-web.[jJ][pP][gG]
+!*-web.[jJ][pP][eE][gG]
+!*-web.[pP][nN][gG]

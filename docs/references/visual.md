@@ -2,6 +2,17 @@
 
 Each month can have its own typography, palette, layout, and motion. Use these examples to pick an approach that suits the memories already collected for that month.
 
+## Russian typography
+
+- **Lora** gives the cover and first chapter a warm serif with a distinct italic. [Cyreal type specimen](https://cyrealtype.github.io/Lora-Cyrillic/)
+- **Golos Text** works for body copy and playback controls. Its heaviest weight gives the second chapter a bolder entrance. [Google Fonts specimen](https://fonts.google.com/specimen/Golos+Text)
+- **PT Serif** suits letters and longer passages. [ParaType specimen](https://info.paratype.ru/wp-content/uploads/2019/07/ptserif55reg.pdf)
+- **Prata** has the sharp contrast for a sparse, formal chapter title. [Google Fonts specimen](https://fonts.google.com/specimen/Prata)
+- **Oranienbaum** suits a photo-led chapter with a large, classic headline. [Google Fonts specimen](https://fonts.google.com/specimen/Oranienbaum)
+- **Old Standard TT** suits dates and captions alongside archival images. [Google Fonts specimen](https://fonts.google.com/specimen/Old+Standard+TT)
+- **Yeseva One** gives a short title a more playful silhouette. [Google Fonts specimen](https://fonts.google.com/specimen/Yeseva+One)
+- **Manrope** offers a geometric sans serif for a contemporary chapter or small labels. [Designer’s specimen](https://www.sharanda.com/manrope)
+
 ## Phone layouts and relationship stories
 
 - **Memory Journal by DIGI.CO** shows a full-screen portrait with a short note and a small music control. Start with the middle phone mockup for a dark, portrait-first chapter. [Dribbble concept](https://dribbble.com/shots/27613786-Memory-Journal-Mobile-App-Design)

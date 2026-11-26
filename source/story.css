@@ -1,3 +1,5 @@
+@import './fonts.css';
+
 :root {
   color-scheme: light;
   --lavender: #f0eaf8;
@@ -7,8 +9,8 @@
   --ink: #402c24;
   --forest: #203b2d;
   --lime: #e1f2a9;
-  --serif: Georgia, 'Times New Roman', serif;
-  --sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --serif: Lora, Georgia, 'Times New Roman', serif;
+  --sans: 'Golos Text', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --gutter: clamp(1.5rem, 6vw, 6rem);
 }
 
@@ -118,8 +120,8 @@ h1, h2, h3, p, figure { margin: 0; }
 .cover__copy > .eyebrow { margin-bottom: 1rem; color: var(--purple); }
 
 .cover h1 {
-  font: 400 clamp(3.65rem, 14vw, 9.2rem)/0.85 var(--serif);
-  letter-spacing: -0.075em;
+  font: 400 clamp(3.1rem, 13vw, 8.3rem)/0.91 var(--serif);
+  letter-spacing: -0.055em;
 }
 
 .cover h1 em, .chapter-one h2 em, .chapter-one__closing em {
@@ -224,8 +226,8 @@ h1, h2, h3, p, figure { margin: 0; }
 
 .chapter-one h2, .chapter-one__closing h3 {
   margin-block: 1.1rem 1.4rem;
-  font: 400 clamp(3.35rem, 11vw, 7.4rem)/0.95 var(--serif);
-  letter-spacing: -0.07em;
+  font: 400 clamp(3rem, 11vw, 7.25rem)/0.95 var(--serif);
+  letter-spacing: -0.055em;
 }
 
 .chapter-one h2 em, .chapter-one__closing em { color: #944c38; }
@@ -269,7 +271,7 @@ h1, h2, h3, p, figure { margin: 0; }
 
 .clip-scene h3 {
   margin-block: 1rem 0.85rem;
-  font: 400 clamp(2.55rem, 6vw, 5.4rem)/0.95 var(--serif);
+  font: 400 clamp(2.25rem, 5.4vw, 5.4rem)/0.95 var(--serif);
   letter-spacing: -0.055em;
 }
 
@@ -316,8 +318,8 @@ h1, h2, h3, p, figure { margin: 0; }
 
 .chapter-two h2 {
   margin-block: 0.95rem 1rem;
-  font: 900 clamp(2.5rem, 10vw, 7rem)/0.83 var(--sans);
-  letter-spacing: -0.075em;
+  font: 900 clamp(2.5rem, 10vw, 7rem)/0.97 var(--sans);
+  letter-spacing: -0.045em;
   text-transform: uppercase;
 }
 
@@ -354,7 +356,7 @@ h1, h2, h3, p, figure { margin: 0; }
     padding-block: 3.2rem 4.2rem;
   }
 
-  .cover h1 { font-size: clamp(4.75rem, 10.8vw, 9.2rem); }
+  .cover h1 { font-size: clamp(3.45rem, 8.5vw, 8.3rem); }
   .cover__description { font-size: 1.1rem; }
   .cover__start { margin-top: 1.8rem; }
   .cover__figure { width: min(94%, 26rem); }
