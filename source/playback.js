@@ -5,6 +5,7 @@ const scrollKeys = new Set([
 export function setUpPlayback({ start, control, status, soundtrack, openingPhoto }) {
   const startLabel = start.querySelector('[data-label]');
   const controlLabel = control.querySelector('[data-label]');
+  const finePointer = window.matchMedia('(pointer: fine)');
   let playing = false;
   let frame = 0;
   let previousTime;
@@ -35,7 +36,8 @@ export function setUpPlayback({ start, control, status, soundtrack, openingPhoto
   }
 
   function hasManualOffset() {
-    return Math.abs(window.scrollY - expectedY) > 1;
+    // A touch browser can report our own scroll after the read below.
+    return finePointer.matches && Math.abs(window.scrollY - expectedY) > 1;
   }
 
   function advance(time) {
@@ -119,7 +121,7 @@ export function setUpPlayback({ start, control, status, soundtrack, openingPhoto
   });
 
   window.addEventListener('scroll', () => {
-    // Also catch native scrollbar drags and scrolling through an assistive device.
+    // Catch native desktop scrolling, including scrollbar drags.
     if (playing && hasManualOffset()) pause();
   }, { passive: true });
 
