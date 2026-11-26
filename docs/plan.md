@@ -2,6 +2,8 @@
 
 Build a public, static, phone-first memory story. The author will choose the material and write the story. The initial structure has twelve months and a closing section, with room for an opening.
 
+Research is collected in [visual references](references/visual.md) and [technical references](references/technical.md).
+
 ## Stage 1 · Playback prototype
 
 1. Scaffold Vite with plain HTML, CSS, and JavaScript. Keep the Vite entry page at the root and the app modules in source.
@@ -27,6 +29,6 @@ Build a public, static, phone-first memory story. The author will choose the mat
 
 ## Local testing and deployment
 
-Use Vite on the same Wi-Fi network to test the prototype on a phone. Once a prototype is worth sharing across networks, deploy the static build. Vercel Hobby is the first option if the private repository belongs to a personal GitHub account. GitHub Pages on GitHub Free requires a public repository. Choose a host when the local prototype is ready to test remotely.
+Use Vite on the same Wi-Fi network to test the prototype on a phone. Host the public static site on Vercel Hobby and keep the GitHub repository private. Connect the private personal GitHub repository once the local prototype is ready for remote testing. Use the Vite preset to build with npm run build and publish dist. Use Vercel preview deployments to review changes on a phone before merging to the production branch.
 
 Only include media intended for the public site in the build. Keep raw exports and editing projects in separate working folders.

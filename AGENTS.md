@@ -3,6 +3,7 @@
 This is a phone-first, static memory story. The author supplies the writing, photos, screenshots, video, voice messages, and music. Use placeholders for layout and playback experiments until the author chooses the material.
 
 - Read [the project plan](docs/plan.md) before changing the chapter structure, playback, or media loading.
+- Consult the [visual references](docs/references/visual.md) and [technical references](docs/references/technical.md) when designing a chapter or implementing an effect.
 - Keep planning and chapter briefs in docs, application code in source, and deployable static media in public.
 - Use Vite, plain HTML, CSS, JavaScript, and GSAP ScrollTrigger for the first prototype.
 - The story has twelve monthly chapters followed by a closing section, with room for an opening. Give each month its own type, composition, and motion. Keep the playback controls easy to recognize across chapters.
