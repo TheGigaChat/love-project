@@ -170,14 +170,31 @@ h1, h2, h3, p, figure { margin: 0; }
   border-inline: 0.15rem solid currentColor;
 }
 
-.playback-control {
+.playback-controls {
   position: fixed;
   z-index: 10;
+  left: max(0.75rem, env(safe-area-inset-left));
   right: max(var(--gutter), calc(0.75rem + env(safe-area-inset-right)));
   bottom: calc(1rem + env(safe-area-inset-bottom));
-  min-width: 7.7rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  pointer-events: none;
+}
+
+.playback-controls .play-button {
   border-color: #ffffff52;
   box-shadow: 0 0.35rem 1.35rem #1a0f2942;
+  pointer-events: auto;
+}
+
+.playback-control { flex-shrink: 0; min-width: 7.7rem; }
+
+.music-toggle {
+  padding-inline: 0.75rem;
+  background: var(--plum);
+  font-size: 0.8rem;
+  line-height: 1.2;
 }
 
 .cover__figure {

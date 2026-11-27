@@ -100,10 +100,13 @@
     <audio preload="none" loop src="/media/test-data/music/good%20for%20the%20ghost%20-%20Alge.mp3" data-soundtrack></audio>
     <audio preload="none" loop src="/media/test-data/music/Save%20me%20-%20Patrick%20Patrikios.mp3" data-soundtrack></audio>
 
-    <button class="play-button playback-control" type="button" data-playback hidden>
-      <span class="play-icon" aria-hidden="true"></span>
-      <span data-label>Пауза</span>
-    </button>
+    <div class="playback-controls">
+      <button class="play-button music-toggle" type="button" data-music-toggle hidden>Выключить музыку</button>
+      <button class="play-button playback-control" type="button" data-playback hidden>
+        <span class="play-icon" aria-hidden="true"></span>
+        <span data-label>Пауза</span>
+      </button>
+    </div>
     <p class="sr-only" role="status" data-playback-status></p>
   </body>
 </html>

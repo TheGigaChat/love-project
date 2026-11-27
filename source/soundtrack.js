@@ -20,10 +20,11 @@ function fadeTo(track, level, time, duration) {
   return end;
 }
 
-export function setUpSoundtrack({ start, elements, onUnavailable }) {
+export function setUpSoundtrack({ start, control, elements, onUnavailable }) {
   let context;
   let tracks;
   let ready = false;
+  let enabled = true;
   let selected = 0;
   let playing = -1;
   let revision = 0;
@@ -89,6 +90,8 @@ export function setUpSoundtrack({ start, elements, onUnavailable }) {
   }
 
   function startSoundtrack() {
+    const request = ++revision;
+
     try {
       context = new AudioContext();
       const resume = context.resume();
@@ -112,16 +115,61 @@ export function setUpSoundtrack({ start, elements, onUnavailable }) {
         };
       });
 
+      control.hidden = false;
       resume.then(() => {
+        if (request !== revision) return;
         ready = true;
         void switchTrack();
-      }, onUnavailable);
+      }, () => {
+        if (request === revision) onUnavailable();
+      });
     } catch {
       onUnavailable();
     }
   }
 
+  function setEnabled(value) {
+    enabled = value;
+    control.textContent = enabled ? 'Выключить музыку' : 'Включить музыку';
+  }
+
+  async function toggleSoundtrack() {
+    const request = ++revision;
+    setEnabled(!enabled);
+
+    if (!enabled) {
+      ready = false;
+      const now = context.currentTime;
+      for (const track of tracks) {
+        track.element.pause();
+        track.gain.cancelScheduledValues(now);
+        track.gain.setValueAtTime(0, now);
+        track.fade = { from: 0, to: 0, start: now, end: now };
+      }
+      return;
+    }
+
+    const index = selected;
+    const track = tracks[index];
+    try {
+      if (index !== playing) track.element.currentTime = 0;
+      await Promise.all([context.resume(), track.element.play()]);
+      if (request !== revision) return;
+
+      playing = index;
+      ready = true;
+      fadeTo(track, NORMAL_GAIN, context.currentTime, REWIND_FADE);
+      if (selected !== index) void switchTrack();
+    } catch {
+      if (request !== revision) return;
+      track.element.pause();
+      setEnabled(false);
+      onUnavailable();
+    }
+  }
+
   start.addEventListener('click', startSoundtrack, { once: true });
+  control.addEventListener('click', toggleSoundtrack);
 
   return {
     select(index) {

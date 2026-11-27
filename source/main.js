@@ -18,6 +18,7 @@ setUpPlayback({
 
 const soundtrack = setUpSoundtrack({
   start,
+  control: document.querySelector('[data-music-toggle]'),
   elements: [...document.querySelectorAll('[data-soundtrack]')],
   onUnavailable() {
     status.textContent = 'Не удалось включить музыку для этой главы.';
