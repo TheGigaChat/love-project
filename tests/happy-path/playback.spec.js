@@ -1,18 +1,5 @@
 import { expect, test } from '@playwright/test';
-
-const startButton = (page) => page.getByRole('button', { name: 'Начать', exact: true });
-const playbackButton = (page) => page.locator('[data-playback]');
-const tracks = (page) => page.locator('[data-soundtrack]');
-const scrollPosition = (page) => page.evaluate(() => window.scrollY);
-const playhead = (track) => track.evaluate((element) => element.currentTime);
-
-async function placeMonthTwo(page, viewportFraction) {
-  await page.locator('#month-two').evaluate((chapter, fraction) => {
-    const top = chapter.getBoundingClientRect().top + window.scrollY;
-    window.scrollTo(0, top - window.innerHeight * fraction);
-    return new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
-  }, viewportFraction);
-}
+import { startButton, playbackButton, tracks, scrollPosition, playhead, placeMonthTwo } from '../helpers.js';
 
 async function swipe(page, from, to) {
   const session = await page.context().newCDPSession(page);
@@ -64,24 +51,6 @@ test('Start, Pause and Resume work with swipes in either direction', async ({ pa
   await expect(playback).toHaveText('Продолжить');
   expect(await scrollPosition(page)).toBeLessThan(afterForwardSwipe - 60);
   await expect(music).toHaveJSProperty('paused', false);
-});
-
-test('late scroll updates do not pause touch playback', async ({ page }) => {
-  await page.addInitScript(() => {
-    const scrollTo = window.scrollTo.bind(window);
-    window.scrollTo = (...args) => {
-      if (args[0]?.behavior === 'instant') {
-        setTimeout(() => scrollTo(...args), 45);
-      } else {
-        scrollTo(...args);
-      }
-    };
-  });
-
-  await page.goto('/');
-  await startButton(page).tap();
-  await expect.poll(() => scrollPosition(page)).toBeGreaterThan(30);
-  await expect(playbackButton(page)).toHaveText('Пауза');
 });
 
 test('the muted inline clip plays only while in view', async ({ page }) => {
@@ -160,51 +129,4 @@ test('the soundtrack fades in and crossfades with the chapter', async ({ page })
   await expect(first).toHaveJSProperty('paused', false);
   expect(await playhead(first)).toBeLessThan(firstPlayhead - 1);
   await expect(second).toHaveJSProperty('paused', true);
-});
-
-test('the fixed music button toggles the current chapter soundtrack', async ({ page }) => {
-  await page.setViewportSize({ width: 320, height: 667 });
-  await page.goto('/');
-  const musicToggle = page.locator('[data-music-toggle]');
-  const playback = playbackButton(page);
-  const first = tracks(page).nth(0);
-  const second = tracks(page).nth(1);
-  await expect(musicToggle).toBeHidden();
-  await startButton(page).tap();
-  await expect(musicToggle).toHaveText('Выключить музыку');
-  await expect(first).toHaveJSProperty('paused', false);
-  await expect(second).toHaveJSProperty('paused', true);
-  await playback.tap();
-  const [stopBox, playbackBox] = await Promise.all([musicToggle.boundingBox(), playback.boundingBox()]);
-  expect(stopBox.x).toBeGreaterThanOrEqual(0);
-  expect(stopBox.y).toBe(playbackBox.y);
-  expect(stopBox.x + stopBox.width).toBeLessThan(playbackBox.x);
-
-  await placeMonthTwo(page, 0.25);
-  await expect(second).toHaveJSProperty('paused', false);
-  await expect(first).toHaveJSProperty('paused', false);
-  await musicToggle.tap();
-  await expect(musicToggle).toHaveText('Включить музыку');
-  await expect(first).toHaveJSProperty('paused', true);
-  await expect(second).toHaveJSProperty('paused', true);
-
-  const beforeResume = await scrollPosition(page);
-  await playback.tap();
-  await expect.poll(() => scrollPosition(page)).toBeGreaterThan(beforeResume + 12);
-  await expect(first).toHaveJSProperty('paused', true);
-  await expect(second).toHaveJSProperty('paused', true);
-
-  await playback.tap();
-  await placeMonthTwo(page, 0.75);
-  await musicToggle.tap();
-  await expect(musicToggle).toHaveText('Выключить музыку');
-  await expect.poll(() => playhead(first)).toBeGreaterThan(0.2);
-  await expect(second).toHaveJSProperty('paused', true);
-  await expect(playback).toHaveText('Продолжить');
-
-  await musicToggle.tap();
-  const stoppedAt = await playhead(first);
-  await expect(first).toHaveJSProperty('paused', true);
-  await musicToggle.tap();
-  await expect.poll(() => playhead(first)).toBeGreaterThan(stoppedAt + 0.1);
 });

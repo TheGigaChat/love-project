@@ -37,11 +37,16 @@ The build goes into `dist/`. To preview that build on your phone, use `npm run p
 
 ## Run the browser tests
 
-Install the Playwright browser once, then run the tests:
+Install the Playwright browser once:
 
 ```powershell
 npx playwright install chromium --only-shell
-npm test
 ```
+
+| Command | Coverage |
+| --- | --- |
+| `npm run test:main` | Happy-path tests for day-to-day development |
+| `npm run test:edge` | Edge cases and regressions |
+| `npm test` | Both suites |
 
 The tests in `tests/` start a local Vite server automatically.

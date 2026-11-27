@@ -26,7 +26,7 @@ const soundtrack = setUpSoundtrack({
 });
 
 function selectChapterSoundtrack(trigger) {
-  soundtrack.select(trigger.scroll() >= trigger.start ? 1 : 0);
+  soundtrack.select(trigger.progress > 0 ? 1 : 0);
 }
 
 ScrollTrigger.create({
